@@ -24,7 +24,7 @@ class AppStore(object):
                 self.add_model(model_candidate)
 
     def add_model(self, model):
-        model.name = model.__name__
+        model.__name__ = model.__name__
         self.models.append(model)
 
 
@@ -97,7 +97,7 @@ class MongonautViewMixin(object):
 
         for mongoadmin in self.get_mongoadmins():
             for model in mongoadmin['obj'].models:
-                if model.name == self.document_name:
+                if model.__name__ == self.document_name:
                     self.mongoadmin = model.mongoadmin
                     break
         # TODO change this to use 'finally' or 'else' or something
